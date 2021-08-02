@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ac/styles/bootstrap.min.css' %}">
+</head>
+<body style="background-color: black;">
+    <form  action="register", method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-4 offset-4 text-light">
+            <div class="mb-3">
+            <h3 ><label class="form-label d-flex justify-content-center">Registration</label></h3>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Username :</label><br>
+              <input type="text" name="username" class="form-control" placeholder="username">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">First Name :</label><br>
+              <input type="text" name="first_name" class="form-control" placeholder="firstname">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Last Name :</label><br>
+              <input type="text" name="last_name" class="form-control" placeholder="lastname">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email :</label><br>
+              <input type="email" name="email" class="form-control" placeholder="email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password :</label><br>
+              <input type="password" name="password1" class="form-control" placeholder="password">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Re-enter Password :</label><br>
+              <input type="password" name="password2" class="form-control" placeholder="confirm password">
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+              <input type="submit" value="Register" class="btn btn-info ">
+            </div>
+        </div>
+    </div>
+</form> 
+<div class="row">
+    <div class="col-sm-4 offset-4 text-warning d-flex justify-content-center">
+        <div>
+            {% for message in messages %}
+            <h4>{{message}}</h4>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
+{% endblock %}
